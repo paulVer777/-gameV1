@@ -1,0 +1,93 @@
+
+:root{
+    --color-primary:#86af49;
+    --color-secondary:#b5e7a0;
+    --color-tertiary:tomato;
+    --color-win:gold;
+    --color-position:purple;
+    --color-white:#fff;
+    --color-black-mod:rgba(0, 0, 0, 0.562);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 2rem;
+    font-family: 'Paytone One',sans-serif;
+}
+
+.game-wrapper{
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.board{
+    display:flex;
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+    height: 30rem;
+}
+
+.commentator{
+    font-size: 3rem;
+    letter-spacing: 1rem;
+}
+
+.current-position{
+    background-color: var(--color-position) !important;
+    color:var(--color-white);
+}
+
+.field{
+    width: 8rem;
+    height:8rem;
+    background-color: var(--color-primary);
+    border:3px solid var(--color-secondary);
+    margin-right: 1rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1rem 1rem 0.5rem var(--color-black-mod);
+}
+
+.bad-field{
+    background-color: var(--color-tertiary);   
+    
+}
+
+.win-field{
+    background-color: var(--color-win);
+}
+
+.happy{
+    animation: grow 5s 4s cubic-bezier(.99, 1, 0, -0.01);
+}
+
+
+@keyframes grow {
+    0%{
+        
+    }
+    50%{
+        transform: scale(2)
+    }
+    100%{
+        transform: scale(1)
+    }
+
+}
+
