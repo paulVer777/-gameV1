@@ -44,10 +44,12 @@ body{
 .commentator{
     font-size: 3rem;
     letter-spacing: 1rem;
+    text-align: center;
+    height:10rem;
 }
 
-.current-position{
-    background-color: var(--color-position) !important;
+div.current-position{
+    background-color: var(--color-position);
     color:var(--color-white);
 }
 
@@ -73,21 +75,9 @@ body{
     background-color: var(--color-win);
 }
 
-.happy{
-    animation: grow 5s 4s cubic-bezier(.99, 1, 0, -0.01);
+.overstepped{
+    background-color: var(--color-position);
 }
 
 
-@keyframes grow {
-    0%{
-        
-    }
-    50%{
-        transform: scale(2)
-    }
-    100%{
-        transform: scale(1)
-    }
-
-}
 

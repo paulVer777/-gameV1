@@ -11,11 +11,11 @@ class Game {
     messenger(data){
       return ({
           welcome: 'Hello ! :) To play just press space on you keyboard.',
-          throw :`Wyrzuciłeś ${this.diceThrow}. Press space to throw a dice.`,
-          field19: `Wyrzucono ${this.diceThrow}. Ups...pole numer 19. Wracasz do pola 11.`,
-          tooFar: `Wyrzucono: ${this.diceThrow}. Przekroczyłeś pole 20 o ${data}. Wracasz na pole ${this.currentPosition}.`,
-          gameOver: 'Ups pole 12. Game over. Press space to play again.',
-          victory: `Victory. Próby: ${this.throws}. Średnia: ${this.sum/this.throws}. Press space to play again.`
+          throw :`You have rolled ${this.diceThrow}. Press space to roll the dice.`,
+          field19: `You have rolled ${this.diceThrow}. Ups...field number 19. You are turning back to field number 11.`,
+          tooFar: `You have rolled: ${this.diceThrow}. Field number 20 overstepped by ${data}. You are turning back to field number ${this.currentPosition}.`,
+          gameOver: `Ups...You are on field number 12. Game over. Attempts: ${this.throws}. Average roll: ${(this.sum/this.throws).toFixed(2)}.Press space to play again.`,
+          victory: `Victory!!!. Attempts: ${this.throws}. Average roll: ${(this.sum/this.throws).toFixed(2)}. Press space to play again.`
       })
     }
 
@@ -23,7 +23,7 @@ class Game {
 
       document.querySelector('.board').innerHTML = ""
 
-      this.fields.map((value,index) => {
+      this.fields.map((value) => {
 
         const div = document.createElement('div')
         
@@ -53,7 +53,7 @@ class Game {
 
     whereAmI(){
       this.currentPosition+=this.diceThrow
-      setTimeout(() => this.makeBoard(), 500)
+      this.makeBoard()
     }
 
     resetGame() {
@@ -68,9 +68,6 @@ class Game {
 
       switch(true){
         case ( position === 20 ): {
-
-          // document.querySelector('.board').childNodes[20].classList.add('happy')
-
           this.showMessage(this.messenger().victory)
           this.resetGame()
           setTimeout(()=>this.makeBoard(),2000)
@@ -89,6 +86,7 @@ class Game {
         }
           break;
         case (position > 20): {
+          document.querySelector('.board').childNodes[20].classList.add('overstepped')
           const num = this.currentPosition - 20
           this.currentPosition = 20 - num
           this.showMessage(this.messenger(num).tooFar)
@@ -97,8 +95,8 @@ class Game {
         }
           break;
         default: {
-          // this.showMessage(this.messenger().throw)
-        }
+          // Do nothing //
+        }    
       }
     }
 }
